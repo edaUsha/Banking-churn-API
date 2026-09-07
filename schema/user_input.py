@@ -1,7 +1,6 @@
 from pydantic import BaseModel, computed_field,Field,field_validator
 from typing import Dict, Annotated, Literal
 import pandas as pd
-import joblib
 
 
 class UserInput(BaseModel):
