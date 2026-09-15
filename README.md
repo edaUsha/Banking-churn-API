@@ -1,5 +1,7 @@
 # Banking-Churn-Prediction
 
+deployment link:https://banking-churn-api.onrender.com/
+
 - created different end points for all: home page, eda page, model page, prediction page
 - churn_utils has both model loaded and features loaded
 
