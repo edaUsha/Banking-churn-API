@@ -44,11 +44,32 @@ This project developed a machine learning model to predict which bank customers 
 
 Older customers were more likely to leave the bank, and customers in Germany had the highest churn rate among all regions. Customers who used fewer bank products or were less active also showed a greater tendency to churn. These patterns suggest the bank should pay special attention to customer groups that may need more support, better service, or more suitable offers.
 
-After evaluating multiple modelling approaches, **XGBoost with optimised class-balance tuning** emerged as the highest-performing solution.
+## Technical Overview:
+
+| Component          | Technology                  | Role                                                    |
+| ------------------ | --------------------------- | ------------------------------------------------------- |
+| Backend API        | FastAPI                     | Handles validation, routing, and predictions            |
+| Request validation | Pydantic                    | Enforces expected input fields and types                |
+| ML model           | XGBoost                     | Predicts churn risk                                     |
+| Preprocessing      | scikit-learn-style pipeline | Prepares raw API inputs for inference                   |
+| Frontend           | Streamlit                   | Provides an interactive form and displays results       |
+| Containerization   | Docker                      | Packages backend and frontend for consistent deployment |
+| Startup script     | start.sh                    | Runs both services together                             |
+| Deployment         | Render                      | Hosts the deployed application                          |
 
 
+The repository includes separate directories for data, models, and schema, with main.py for the FastAPI app and frontend.py for the Streamlit interface.
 
-# sepatate notes:
+### API Design
+The application exposes separate endpoints for the home page, EDA page, model page, and prediction page. It uses GET requests to retrieve information and a POST request for churn predictions.
+
+
+### Deployment
+The Docker image runs both the FastAPI backend and Streamlit frontend. Because the two processes normally require separate terminals, start.sh starts them together in one container.
+
+The startup configuration uses ${PORT:-8501}, meaning it uses Render’s assigned PORT environment variable when available and falls back to port 8501 locally. This allows the same Docker image to work in both local and cloud environments.
+
+### sepatate notes:
 
 - created different end points for all: home page, eda page, model page, prediction page
 - churn_utils has both model loaded and features loaded
