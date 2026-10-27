@@ -2,6 +2,54 @@
 
 deployment link:https://banking-churn-api.onrender.com/
 
+
+## 1. Background and Overview
+
+Customer churn — the decision by a customer to close their account and leave — is one of the most costly challenges facing retail banks today. Acquiring a new customer costs five to seven times more than retaining an existing one.
+
+This project addresses a direct business question: **Which customers are most likely to leave, and what can the bank do about it before they do?**
+
+Using a dataset of 10,000 bank customers, this analysis builds a predictive model that identifies high-risk customers before they churn, enabling the bank to intervene proactively with targeted retention strategies.
+
+
+
+## 2. Data Structure Overview
+
+The analysis is based on a complete dataset of **10,000 customer records** with no missing values, representing a reliable and analysis-ready foundation.
+
+| Attribute | Detail |
+|---|---|
+| Total Customers | 10,000 |
+| Churned Customers | 2,037 (20.37%) |
+| Missing Values | None |
+| Total Features | 14 columns |
+
+**Key customer attributes included:**
+
+| Category | Features |
+|---|---|
+| Demographics | Age, Gender, Geography |
+| Financial Profile | Credit Score, Account Balance, Estimated Salary |
+| Relationship Depth | Number of Products, Tenure, Has Credit Card |
+| Engagement | Is Active Member |
+| Target Variable | Exited (Churned: Yes / No) |
+
+The dataset reflects a **realistic churn imbalance** — roughly 1 in 5 customers churned — consistent with industry norms in retail banking.
+
+
+
+## 3. Executive Summary
+
+This project developed a machine learning model to predict which bank customers are at risk of churning.
+
+Older customers were more likely to leave the bank, and customers in Germany had the highest churn rate among all regions. Customers who used fewer bank products or were less active also showed a greater tendency to churn. These patterns suggest the bank should pay special attention to customer groups that may need more support, better service, or more suitable offers.
+
+After evaluating multiple modelling approaches, **XGBoost with optimised class-balance tuning** emerged as the highest-performing solution.
+
+
+
+# sepatate notes:
+
 - created different end points for all: home page, eda page, model page, prediction page
 - churn_utils has both model loaded and features loaded
 
